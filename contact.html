@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>About — Monument Property Developments</title>
-<meta name="description" content="Founded 18 years ago, Monument Property Developments has grown into a trusted London residential developer, delivering quality homes with end-to-end expertise.">
+<title>Contact — Monument Property Developments</title>
+<meta name="description" content="Get in touch with Monument Property Developments — whether you have a site or land, spotted one of our boards, or have a general enquiry. We read every message personally.">
 <link rel="icon" type="image/png" href="assets/monument-icon.png">
 <link rel="apple-touch-icon" href="assets/monument-icon.png">
 <link rel="stylesheet" href="assets/site.css">
 </head>
-<body data-screen-label="About">
+<body data-screen-label="Contact">
 
 <nav class="nav">
   <div class="nav__inner">
@@ -19,9 +19,9 @@
     </a>
     <div class="nav__links">
       <a class="nav__link" href="index.html">Home</a>
-      <a class="nav__link active" href="about.html">About</a>
+      <a class="nav__link" href="about.html">About</a>
       <a class="nav__link" href="projects.html">Projects</a>
-      <a class="nav__link" href="contact.html">Contact</a>
+      <a class="nav__link active" href="contact.html">Contact</a>
       <a class="nav__link nav__link--play" href="game.html"><span class="pdot"></span>Play</a>
       <a class="btn btn--primary nav__cta" href="contact.html">Get in touch <span class="arr">→</span></a>
     </div>
@@ -37,83 +37,115 @@
   <a class="btn btn--primary btn--block mm-cta" href="contact.html">Get in touch →</a>
 </div>
 
-<!-- PAGE HEADER -->
 <header class="pagehead">
   <div class="container">
-    <span class="pagehead__index">02 / About</span>
-    <p class="kicker">Our story</p>
-    <h1 class="reveal in">Eighteen years of building well, in London.</h1>
-    <p class="pagehead__sub reveal in" data-d="1">Monument Property Developments is a residential developer specialising in Build to Rent and Build to Sell homes — known for design-led schemes, sustainable construction and a reputation for getting the details right.</p>
+    <span class="pagehead__index">04 / Contact</span>
+    <p class="kicker">Talk to us</p>
+    <h1 class="reveal in">Get in touch.</h1>
+    <p class="pagehead__sub reveal in" data-d="1">Got a site or some land? Spotted one of our boards? Or just have a question? However you've found us, we'd love to hear from you — and we read every message ourselves.</p>
   </div>
 </header>
 
-<!-- STORY -->
 <section class="section">
-  <div class="container split">
+  <div class="container split" style="align-items:start;gap:clamp(40px,7vw,110px)">
+
+    <!-- LEFT: details -->
     <div class="reveal">
-      <p class="kicker">The beginning</p>
-      <h2>From a single site to a trusted name.</h2>
+      <p class="kicker">No call centres</p>
+      <h2 style="margin-bottom:.6em">However you reach us, you'll reach a person.</h2>
+      <p class="muted maxw-prose">Whether you're a landowner, you've seen one of our development boards out and about, or you simply have a question — your message comes straight to our team. No chatbots, no runaround.</p>
+
+      <dl style="margin-top:2.4em">
+        <div class="inforow"><dt>Email</dt><dd><a href="mailto:hasan@monumentdevelopments.co.uk" class="textlink" style="border:0;padding:0">hasan@monumentdevelopments.co.uk</a></dd></div>
+        <div class="inforow"><dt>Hours</dt><dd>Mon–Fri · 9:00–18:00</dd></div>
+      </dl>
     </div>
+
+    <!-- RIGHT: form -->
     <div class="reveal" data-d="1">
-      <p class="lead">Founded eighteen years ago, Monument has steadily grown into a respected name in London's property landscape.</p>
-      <p class="muted">With a consistent commitment to high-quality developments, we've completed 26 schemes and built a reputation for excellence. Our dedicated team focuses on creating innovative, sustainable spaces that meet the evolving needs of homeowners, tenants and investors. Over the years we've cultivated strong relationships across the industry — and our passion for exceptional craftsmanship continues to drive our growth.</p>
-    </div>
-  </div>
-</section>
+      <form class="form" id="contactForm" name="enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="enquiry">
+        <p hidden aria-hidden="true" style="display:none"><label>Don’t fill this in if you’re human: <input name="bot-field"></label></p>
 
-<!-- PHILOSOPHY QUOTE -->
-<section class="section band" style="background:var(--bg-2)">
-  <div class="container center reveal" style="max-width:24ch;margin-inline:auto">
-    <p class="kicker" style="justify-content:center">Our philosophy</p>
-    <p class="display" style="font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.18">We don't just build properties. We build <span class="serif-it accent">places people are proud to call home.</span></p>
-  </div>
-</section>
+        <div class="field">
+          <label>What's this about? <span class="req">*</span></label>
+          <div class="chips" id="reasonChips" role="group">
+            <span class="chip" data-reason="site">I have a site / land</span>
+            <span class="chip" data-reason="referral">Introducing a site</span>
+            <span class="chip" data-reason="board">Saw one of your boards</span>
+            <span class="chip" data-reason="general">General enquiry</span>
+            <span class="chip" data-reason="invest">Invest / partner</span>
+          </div>
+          <input type="hidden" id="reason" name="reason">
+          <span class="err">Please choose what your enquiry is about.</span>
+        </div>
 
-<!-- WHAT SETS US APART -->
-<section class="section">
-  <div class="container">
-    <div class="reveal" style="max-width:56ch;margin-bottom:clamp(36px,4vw,60px)">
-      <p class="kicker">What sets us apart</p>
-      <h2>Seven things every Monument development is built on.</h2>
-    </div>
-    <div class="grid g-2">
-      <div class="offer reveal" style="border-top:1px solid var(--line)"><span class="offer__no">01</span><h3>Expertise in development</h3><p class="offer__body">Residential, commercial and mixed-use — comprehensive expertise transforming sites to meet modern needs.</p></div>
-      <div class="offer reveal" data-d="1" style="border-top:1px solid var(--line)"><span class="offer__no">02</span><h3>Sustainable building</h3><p class="offer__body">Eco-friendly methods and sustainable design that minimise impact and maximise energy efficiency.</p></div>
-      <div class="offer reveal"><span class="offer__no">03</span><h3>Quality craftsmanship</h3><p class="offer__body">Superior materials and exceptional craft — durability, aesthetics and attention to detail throughout.</p></div>
-      <div class="offer reveal" data-d="1"><span class="offer__no">04</span><h3>End-to-end management</h3><p class="offer__body">From site acquisition to completion, we manage every stage for a seamless, stress-free experience.</p></div>
-      <div class="offer reveal"><span class="offer__no">05</span><h3>Design &amp; architecture</h3><p class="offer__body">Cutting-edge design and architectural innovation creating functional, stylish places to live.</p></div>
-      <div class="offer reveal" data-d="1"><span class="offer__no">06</span><h3>Client-centric approach</h3><p class="offer__body">Every development is tailored to its vision, timeline and budget — driven by what clients truly need.</p></div>
-      <div class="offer reveal" style="border-bottom:1px solid var(--line)"><span class="offer__no">07</span><h3>Strong partner network</h3><p class="offer__body">Established relationships with architects, engineers, contractors and suppliers ensure timely, cost-effective delivery.</p></div>
-      <div class="reveal" data-d="1" style="display:flex;align-items:center;justify-content:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
-        <a class="btn btn--ghost" href="contact.html">Work with us <span class="arr">→</span></a>
+        <div class="grid g-2" style="gap:22px">
+          <div class="field">
+            <label for="name">Name <span class="req">*</span></label>
+            <input class="input" id="name" name="name" type="text" placeholder="Your full name" required>
+            <span class="err">Please enter your name.</span>
+          </div>
+          <div class="field">
+            <label for="email">Email <span class="req">*</span></label>
+            <input class="input" id="email" name="email" type="email" placeholder="you@email.com" required>
+            <span class="err">Please enter a valid email.</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input class="input" id="phone" name="phone" type="tel" placeholder="Optional — useful if you'd prefer a call back">
+          <span class="err"></span>
+        </div>
+
+        <!-- conditional: site -->
+        <div class="field cond" data-show="site referral" hidden>
+          <label for="location">Site location / postcode</label>
+          <input class="input" id="location" name="location" type="text" placeholder="e.g. London E8, or nearest postcode">
+          <span class="err"></span>
+        </div>
+        <div class="field cond" data-show="site" hidden>
+          <label>Type of opportunity</label>
+          <div class="chips" id="typeChips" role="group">
+            <span class="chip" data-val="Residential">Residential</span>
+            <span class="chip" data-val="Commercial">Commercial</span>
+            <span class="chip" data-val="Mixed-use">Mixed-use</span>
+            <span class="chip" data-val="Land only">Land only</span>
+            <span class="chip" data-val="Not sure">Not sure</span>
+          </div>
+          <input type="hidden" id="siteType" name="siteType">
+        </div>
+
+        <!-- conditional: board -->
+        <div class="field cond" data-show="board" hidden>
+          <label for="board">Which development / board location</label>
+          <input class="input" id="board" name="board" type="text" placeholder="e.g. the board on Mare Street, E8">
+          <span class="err"></span>
+        </div>
+
+        <div class="field">
+          <label for="message" id="msgLabel">Your message <span class="req">*</span></label>
+          <textarea class="textarea" id="message" name="message" placeholder="Choose an option above, then tell us a little more…" required></textarea>
+          <span class="err">Please add a few details so we can help.</span>
+        </div>
+
+        <button class="btn btn--primary btn--block" type="submit" id="submitBtn">Send enquiry <span class="arr">→</span></button>
+        <p class="muted" style="font-size:.78rem;text-align:center;margin:0">By sending, you agree to be contacted about your enquiry. We never share your details.</p>
+      </form>
+
+      <div class="form__success reveal" id="success" style="display:none">
+        <div class="tick">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <h3 style="margin-bottom:.4em">Thank you — message received.</h3>
+        <p class="muted" style="margin:0">Your enquiry is with our team. We read every message personally and will reply, usually within two working days.</p>
+        <button class="btn btn--ghost" id="resetBtn" style="margin-top:1.6em">Send another <span class="arr">→</span></button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STATS -->
-<section class="section--tight band" style="background:var(--bg-2)">
-  <div class="container">
-    <div class="stats reveal">
-      <div class="stat"><div class="stat__num"><span data-count="18">18</span></div><div class="stat__label">Years in business</div></div>
-      <div class="stat"><div class="stat__num"><span data-count="26">26</span></div><div class="stat__label">Developments completed</div></div>
-      <div class="stat"><div class="stat__num"><span data-count="120">120</span></div><div class="stat__label">Units sold</div></div>
-      <div class="stat"><div class="stat__num"><span data-count="52">52</span></div><div class="stat__label">Tenants housed</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="section">
-  <div class="container cta-block reveal">
-    <p class="kicker" style="justify-content:center">Let's build together</p>
-    <h2>Have a site you think we'd be right for?</h2>
-    <p class="lead">Whether it's residential, commercial or mixed-use, we'd love to explore how we can bring your site to life.</p>
-    <a class="btn btn--primary" href="contact.html">Get in touch <span class="arr">→</span></a>
-  </div>
-</section>
-
-<!-- FOOTER -->
 <footer class="footer">
   <div class="container">
     <div class="footer__top">
@@ -138,5 +170,101 @@
 </a>
 
 <script src="assets/site.js"></script>
+<script>
+(function(){
+  var form=document.getElementById('contactForm');
+  var success=document.getElementById('success');
+  var resetBtn=document.getElementById('resetBtn');
+  var reasonChips=[].slice.call(document.querySelectorAll('#reasonChips .chip'));
+  var reasonInput=document.getElementById('reason');
+  var typeChips=[].slice.call(document.querySelectorAll('#typeChips .chip'));
+  var typeInput=document.getElementById('siteType');
+  var conds=[].slice.call(document.querySelectorAll('.cond'));
+  var msg=document.getElementById('message');
+  var msgLabel=document.getElementById('msgLabel');
+
+  var copy={
+    site:{label:'Tell us about the site', ph:'Approximate size, planning status, your role, and anything that would help us understand the opportunity.'},
+    board:{label:'Your message', ph:'Which board did you see, and what would you like to know? Quote any reference on the board if you can.'},
+    general:{label:'Your message', ph:'How can we help?'},
+    invest:{label:'Your message', ph:'Tell us a little about your interest in working with us.'},
+    referral:{label:'About the site you\'re introducing', ph:'Where is the site, and who owns it if you know? Add your details so we can arrange your finder\'s fee if we complete.'}
+  };
+
+  function applyReason(reason){
+    reasonInput.value=reason;
+    reasonChips.forEach(function(c){ c.classList.toggle('sel', c.getAttribute('data-reason')===reason); });
+    conds.forEach(function(el){
+      var show=el.getAttribute('data-show').split(' ').indexOf(reason)>-1;
+      el.hidden=!show;
+    });
+    if(copy[reason]){
+      msgLabel.innerHTML=copy[reason].label+' <span class="req">*</span>';
+      msg.setAttribute('placeholder', copy[reason].ph);
+    }
+    form.querySelector('.field').classList.remove('invalid');
+  }
+
+  reasonChips.forEach(function(chip){
+    chip.addEventListener('click',function(){ applyReason(chip.getAttribute('data-reason')); });
+  });
+  typeChips.forEach(function(chip){
+    chip.addEventListener('click',function(){
+      typeChips.forEach(function(c){c.classList.remove('sel');});
+      chip.classList.add('sel'); typeInput.value=chip.getAttribute('data-val');
+    });
+  });
+
+  function validEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var ok=true;
+    var name=document.getElementById('name'), email=document.getElementById('email');
+    var checks=[
+      [reasonChips[0].closest('.field'), reasonInput.value.length>0],
+      [name.closest('.field'), name.value.trim().length>0],
+      [email.closest('.field'), validEmail(email.value.trim())],
+      [msg.closest('.field'), msg.value.trim().length>0]
+    ];
+    checks.forEach(function(p){ var bad=!p[1]; p[0].classList.toggle('invalid',bad); if(bad) ok=false; });
+    if(!ok){ var first=form.querySelector('.field.invalid .input,.field.invalid .textarea,.field.invalid .chips'); if(first&&first.focus) first.focus(); return; }
+    var btn=document.getElementById('submitBtn');
+    btn.textContent='Sending…'; btn.disabled=true;
+    function showSuccess(){ form.style.display='none'; success.style.display='block'; success.classList.add('in'); }
+    var body=new URLSearchParams(new FormData(form)).toString();
+    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body})
+      .then(showSuccess).catch(showSuccess);
+  });
+
+  ['name','email','message'].forEach(function(id){
+    var el=document.getElementById(id);
+    el.addEventListener('input',function(){ el.closest('.field').classList.remove('invalid'); });
+  });
+
+  if(resetBtn){
+    resetBtn.addEventListener('click',function(){
+      form.reset();
+      reasonChips.forEach(function(c){c.classList.remove('sel');});
+      typeChips.forEach(function(c){c.classList.remove('sel');});
+      reasonInput.value=''; typeInput.value='';
+      conds.forEach(function(el){ el.hidden=true; });
+      msgLabel.innerHTML='Your message <span class="req">*</span>';
+      msg.setAttribute('placeholder','Choose an option above, then tell us a little more…');
+      var btn=document.getElementById('submitBtn');
+      btn.innerHTML='Send enquiry <span class="arr">→</span>'; btn.disabled=false;
+      success.style.display='none'; form.style.display='grid';
+    });
+  }
+  // pre-fill from URL params (e.g. arriving from the site qualifier or a referral CTA)
+  (function(){
+    var p=new URLSearchParams(location.search);
+    var r=p.get('reason'); if(r) applyReason(r);
+    var loc=p.get('location'); if(loc){ var l=document.getElementById('location'); if(l) l.value=loc; }
+    var ty=p.get('type'); if(ty){ typeChips.forEach(function(c){ if(c.getAttribute('data-val').toLowerCase()===ty.toLowerCase()){ c.classList.add('sel'); typeInput.value=c.getAttribute('data-val'); } }); }
+    var m=p.get('msg'); if(m){ msg.value=m; }
+  })();
+})();
+</script>
 </body>
 </html>

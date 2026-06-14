@@ -3,55 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Build the Monument — A Game</title>
-<meta name="description" content="Stack the floors, line them up perfectly, and build the tallest tower you can. A little game from Monument Property Developments.">
+<title>Monument Property Developments — London Residential Developer</title>
+<meta name="description" content="Monument Property Developments — a London-based residential developer delivering high-quality Build to Rent and Build to Sell homes for over 18 years.">
 <link rel="icon" type="image/png" href="assets/monument-icon.png">
 <link rel="apple-touch-icon" href="assets/monument-icon.png">
 <link rel="stylesheet" href="assets/site.css">
-<style>
-  .game-stage{padding:clamp(120px,16vh,180px) 0 clamp(60px,8vw,100px)}
-  .game-head{text-align:center;max-width:54ch;margin:0 auto clamp(28px,4vw,44px)}
-  .game-wrap{max-width:460px;margin:0 auto;position:relative}
-  .game-card{position:relative;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:#13161a;box-shadow:0 30px 80px rgba(0,0,0,.5)}
-  #game{display:block;width:100%;height:auto;touch-action:manipulation;cursor:pointer}
-  /* HUD */
-  .hud{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:flex-start;padding:16px 18px;pointer-events:none;z-index:3}
-  .hud__floors{display:flex;flex-direction:column;gap:.1em}
-  .hud__floors b{font-family:var(--serif);font-size:2.6rem;font-weight:500;line-height:1;color:var(--text)}
-  .hud__floors span{font-family:var(--mono);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted-2)}
-  .hud__best{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);text-align:right;line-height:1.5}
-  .hud__best b{display:block;font-size:.95rem}
-  .sound-btn{position:absolute;bottom:14px;right:14px;z-index:4;background:rgba(0,0,0,.4);border:1px solid var(--line-2);color:var(--muted);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.25s}
-  .sound-btn:hover{color:var(--text);border-color:var(--accent)}
-  /* overlays */
-  .ov{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;background:rgba(15,17,20,.82);backdrop-filter:blur(7px);transition:opacity .4s var(--ease);}
-  .ov[hidden]{display:none}
-  .ov__badge{font-family:var(--mono);font-size:.64rem;letter-spacing:.26em;text-transform:uppercase;color:var(--accent);margin-bottom:1.1em;display:inline-flex;align-items:center;gap:.6em}
-  .ov h2{font-family:var(--serif);font-size:clamp(2rem,7vw,2.7rem);font-weight:500;line-height:1.04;margin-bottom:.4em}
-  .ov p{color:var(--muted);font-size:.95rem;max-width:32ch;margin:0 0 1.7em}
-  .ov .big{font-family:var(--serif);font-size:clamp(3.4rem,15vw,5rem);font-weight:500;color:var(--accent);line-height:1;margin:.1em 0 .15em}
-  .ov .biglabel{font-family:var(--mono);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:1.6em}
-  .ov .newbest{font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.4em;display:none}
-  .ov .keys{margin-top:1.6em;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;color:var(--muted-2)}
-  .ov .keys kbd{background:var(--bg-3);border:1px solid var(--line-2);border-radius:3px;padding:.2em .5em;color:var(--muted);font-family:var(--mono)}
-  .game-foot{text-align:center;margin-top:clamp(24px,3vw,36px)}
-  .game-foot a{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em}
-  /* leaderboard */
-  .lb{margin:1.5em auto 0;width:100%;max-width:230px}
-  .lb__title{font-family:var(--mono);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted-2);margin-bottom:.7em;display:flex;align-items:center;gap:.7em}
-  .lb__title::before,.lb__title::after{content:"";height:1px;flex:1;background:var(--line)}
-  .lb__row{display:flex;align-items:center;justify-content:space-between;padding:.4em .2em;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:.78rem}
-  .lb__row:last-child{border-bottom:0}
-  .lb__rank{color:var(--muted-2);width:1.6em;text-align:left}
-  .lb__score{color:var(--text);font-weight:500}
-  .lb__row.empty .lb__score{color:var(--muted-2)}
-  .lb__row.me .lb__rank,.lb__row.me .lb__score{color:var(--accent)}
-  .lb__unit{color:var(--muted-2);font-size:.64rem;margin-left:.45em;letter-spacing:.04em}
-  .lb__me{color:var(--accent);font-size:.6rem;letter-spacing:.06em;margin-left:.5em}
-</style>
 </head>
-<body data-screen-label="Game">
+<body data-screen-label="Home">
 
+<!-- NAV -->
 <nav class="nav">
   <div class="nav__inner">
     <a class="brand" href="index.html" aria-label="Monument Property Developments — home">
@@ -59,11 +19,11 @@
       <span class="brand__sub">Property Developments</span>
     </a>
     <div class="nav__links">
-      <a class="nav__link" href="index.html">Home</a>
+      <a class="nav__link active" href="index.html">Home</a>
       <a class="nav__link" href="about.html">About</a>
       <a class="nav__link" href="projects.html">Projects</a>
       <a class="nav__link" href="contact.html">Contact</a>
-      <a class="nav__link nav__link--play active" href="game.html"><span class="pdot"></span>Play</a>
+      <a class="nav__link nav__link--play" href="game.html"><span class="pdot"></span>Play</a>
       <a class="btn btn--primary nav__cta" href="contact.html">Get in touch <span class="arr">→</span></a>
     </div>
     <button class="nav__burger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -78,56 +38,175 @@
   <a class="btn btn--primary btn--block mm-cta" href="contact.html">Get in touch →</a>
 </div>
 
-<section class="game-stage">
-  <div class="container">
-    <div class="game-head">
-      <p class="kicker" style="justify-content:center">Just for fun</p>
-      <h1 style="font-size:clamp(2.4rem,6vw,4rem)">Build the Monument</h1>
-      <p class="muted mt-s">Drop each floor onto the one below. Line them up perfectly to keep your width — miss, and the overhang gets trimmed. How high can you build?</p>
+<!-- HERO -->
+<header class="hero">
+  <div class="hero__bg ph" data-label="Hero image — completed development, London"></div>
+  <div class="hero__grad"></div>
+  <a class="hero-ribbon" href="game.html" aria-label="Play our game — Build the Monument">
+    <span class="hero-ribbon__inner">
+      <span class="hr-tag"><span class="pdot"></span>Play our game</span>
+      <span class="hr-text">Build the Monument — stack the floors and see how high you can build</span>
+      <span class="hr-cta">Play now <span class="arr">→</span></span>
+    </span>
+  </a>
+  <div class="hero__inner container">
+    <p class="kicker">London · Residential Developer · Est. 2008</p>
+    <h1 class="reveal in">Building homes,<br><span class="serif-it">building futures.</span></h1>
+    <p class="hero__sub lead reveal in" data-d="1">A London property developer delivering high-quality Build&nbsp;to&nbsp;Rent and Build&nbsp;to&nbsp;Sell homes — design-led, sustainably built, and crafted to last.</p>
+    <div class="hero__cta reveal in" data-d="2">
+      <a class="btn btn--primary" href="contact.html">Get in touch <span class="arr">→</span></a>
+      <a class="btn btn--ghost" href="projects.html">View developments</a>
     </div>
+  </div>
+  <div class="hero__meta">
+    <span class="eyebrow">18 years</span>
+    <span class="muted" style="font-size:.85rem">of trusted delivery</span>
+  </div>
+  <div class="scroll-cue"><span class="line"></span>Scroll</div>
+</header>
 
-    <div class="game-wrap">
-      <div class="game-card">
-        <canvas id="game" width="460" height="620"></canvas>
+<!-- POSITIONING -->
+<section class="section">
+  <div class="container split">
+    <div class="reveal">
+      <p class="kicker">Who we are</p>
+      <h2>Exceptional living spaces, delivered with care from site to set of keys.</h2>
+    </div>
+    <div class="reveal" data-d="1">
+      <p class="lead">Monument Property Developments specialises in high-quality residential developments across London — blending modern design with everyday functionality.</p>
+      <p class="muted">With over 18 years of industry experience, we create homes that meet the evolving needs of homeowners, tenants and investors alike. Whether stylish apartments or beautifully crafted houses, we take pride in our attention to detail at every stage of the development process.</p>
+      <a class="textlink mt-s" href="about.html">More about our story <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
 
-        <div class="hud">
-          <div class="hud__floors"><b id="floors">0</b><span>Floors</span></div>
-          <div class="hud__best">Best<b id="best">0</b></div>
-        </div>
-
-        <button class="sound-btn" id="soundBtn" aria-label="Toggle sound" title="Sound on/off">
-          <svg id="soundIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>
-        </button>
-
-        <!-- START -->
-        <div class="ov" id="ovStart">
-          <span class="ov__badge">▲ A Monument game</span>
-          <h2>Stack your<br>tower to the sky.</h2>
-          <p>Tap, click, or hit space to drop a floor. Nail a perfect line-up to build wide and tall.</p>
-          <button class="btn btn--primary" id="startBtn">Start building <span class="arr">→</span></button>
-          <p class="keys"><kbd>Space</kbd> / <kbd>Click</kbd> / <kbd>Tap</kbd> to drop</p>
-          <div class="lb" id="lbStart"></div>
-        </div>
-
-        <!-- GAME OVER -->
-        <div class="ov" id="ovOver" hidden>
-          <span class="ov__badge" id="overTitle">Topped out</span>
-          <div class="big" id="finalFloors">0</div>
-          <div class="biglabel">Floors built</div>
-          <div class="newbest" id="newBest">★ New record!</div>
-          <div class="lb" id="lbOver"></div>
-          <button class="btn btn--primary" id="againBtn" style="margin-top:1.5em">Build again <span class="arr">↺</span></button>
-          <p class="keys" style="margin-top:1.4em"><a class="textlink" href="contact.html" style="border:0;padding:0">Got a real site for us? →</a></p>
-        </div>
+<!-- WHAT WE OFFER -->
+<section class="section">
+  <div class="container">
+    <div class="reveal" style="max-width:60ch;margin-bottom:clamp(40px,5vw,72px)">
+      <p class="kicker">What we offer</p>
+      <h2>Developments designed to elevate everyday living.</h2>
+    </div>
+    <div class="offers">
+      <div class="offer reveal">
+        <span class="offer__no">01</span>
+        <h3>Custom Designs</h3>
+        <p class="offer__body">Bespoke, design-led homes — each property is uniquely considered and built to the highest standards of craftsmanship.</p>
       </div>
-
-      <div class="game-foot">
-        <a class="textlink" href="index.html"><span class="arr">←</span> Back to the site</a>
+      <div class="offer reveal">
+        <span class="offer__no">02</span>
+        <h3>Prime Locations</h3>
+        <p class="offer__body">Situated in desirable neighbourhoods with easy access to amenities, schools and transport links across London.</p>
+      </div>
+      <div class="offer reveal">
+        <span class="offer__no">03</span>
+        <h3>Modern Amenities</h3>
+        <p class="offer__body">Smart-home technology, energy-efficient systems and luxury finishes specified as standard across our developments.</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- APPROACH / FEATURES -->
+<section class="section band" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="split" style="align-items:end;margin-bottom:clamp(34px,4vw,56px)">
+      <div class="reveal">
+        <p class="kicker">Our approach</p>
+        <h2>End-to-end expertise, from site acquisition to handover.</h2>
+      </div>
+      <p class="muted reveal" data-d="1" style="max-width:40ch">We manage every stage of the development process — providing a seamless, stress-free experience for landowners, partners and investors.</p>
+    </div>
+    <div class="grid g-3">
+      <div class="card card--feature reveal"><span class="card__no">01</span><h3>Property Development</h3><p>Residential, commercial and mixed-use expertise — transforming sites to meet modern needs.</p></div>
+      <div class="card card--feature reveal" data-d="1"><span class="card__no">02</span><h3>Sustainable Building</h3><p>Eco-friendly methods and energy-efficient design that minimise environmental impact on every project.</p></div>
+      <div class="card card--feature reveal" data-d="2"><span class="card__no">03</span><h3>Quality Craftsmanship</h3><p>Superior materials and exacting detail — built for durability, beauty and longevity.</p></div>
+      <div class="card card--feature reveal"><span class="card__no">04</span><h3>Project Management</h3><p>One accountable team from acquisition to completion, keeping delivery on time and on budget.</p></div>
+      <div class="card card--feature reveal" data-d="1"><span class="card__no">05</span><h3>Design &amp; Architecture</h3><p>Considered architecture and contemporary detailing that enhance how people live.</p></div>
+      <div class="card card--feature reveal" data-d="2"><span class="card__no">06</span><h3>Trusted Network</h3><p>Established relationships with architects, engineers and contractors for cost-effective delivery.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRACK RECORD -->
+<section class="section">
+  <div class="container">
+    <div class="reveal" style="max-width:58ch;margin-bottom:clamp(34px,4vw,56px)">
+      <p class="kicker">Track record</p>
+      <h2>A trusted name, built one development at a time.</h2>
+      <p class="muted mt-s">Founded 18 years ago, Monument has grown into a trusted name in London property — driven by a passion for exceptional craftsmanship and lasting relationships.</p>
+    </div>
+    <div class="stats reveal">
+      <div class="stat"><div class="stat__num"><span data-count="18">18</span></div><div class="stat__label">Years in business</div></div>
+      <div class="stat"><div class="stat__num"><span data-count="26">26</span></div><div class="stat__label">Developments completed</div></div>
+      <div class="stat"><div class="stat__num"><span data-count="120">120</span></div><div class="stat__label">Units sold</div></div>
+      <div class="stat"><div class="stat__num"><span data-count="52">52</span></div><div class="stat__label">Tenants housed</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SITE QUALIFIER -->
+<section class="section band" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="reveal" style="max-width:60ch;margin:0 auto clamp(32px,4vw,50px);text-align:center">
+      <p class="kicker" style="justify-content:center">For landowners &amp; sellers</p>
+      <h2>Have a site? Find out in 30 seconds.</h2>
+      <p class="muted mt-s">Answer five quick questions and we'll tell you on the spot whether it's the kind of opportunity we're looking for — then send the details straight through.</p>
+    </div>
+    <div class="qual reveal" id="qualifier" data-d="1">
+      <div class="qual__head">
+        <span class="qual__step">Step <b id="qStepNum">1</b> / 5</span>
+        <div class="qual__bar"><span></span></div>
+      </div>
+      <div class="qual__stage"></div>
+    </div>
+  </div>
+</section>
+
+<!-- REFERRAL -->
+<section class="section">
+  <div class="container">
+    <div class="refer">
+      <div class="reveal">
+        <p class="kicker">Introducer reward</p>
+        <h2>Know a site? There's something in it for you.</h2>
+        <p class="muted maxw-prose mt-s">Builders, agents, neighbours — if you point us towards land or a site and we go on to acquire it, we pay a finder's fee on completion. No site is too small to mention, and your introduction stays confidential.</p>
+        <a class="btn btn--primary mt-m" href="contact.html?reason=referral">Introduce a site <span class="arr">→</span></a>
+      </div>
+      <div class="refer__steps reveal" data-d="1">
+        <div class="refstep"><span class="refstep__n">01</span><div><h4>Tell us about it</h4><p>Send the location and a line or two — that's all we need to start.</p></div></div>
+        <div class="refstep"><span class="refstep__n">02</span><div><h4>We do the work</h4><p>We appraise, negotiate and, where needed, take it through planning.</p></div></div>
+        <div class="refstep"><span class="refstep__n">03</span><div><h4>You get paid</h4><p>If we complete the purchase, your finder's fee follows on completion.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GAME TEASER -->
+<section class="section game-teaser">
+  <div class="container">
+    <div class="game-teaser__inner">
+      <div class="reveal">
+        <span class="badge-fun"><span class="pdot"></span>Coffee break</span>
+        <h2>Got a minute? <span class="serif-it accent">Build the Monument.</span></h2>
+        <p>Stack the floors, line them up just right, and see how tall a tower you can raise. A little game, on the house — beat your best score.</p>
+        <a class="btn btn--primary" href="game.html">Play the game <span class="arr">→</span></a>
+      </div>
+      <a class="teaser-tower reveal" data-d="1" href="game.html" aria-label="Play Build the Monument">
+        <span class="tt-floor"></span>
+        <span class="tt-floor"></span>
+        <span class="tt-floor"></span>
+        <span class="tt-floor"></span>
+        <span class="tt-floor"></span>
+        <span class="tt-floor"></span>
+        <span class="tt-floor tt-base"></span>
+        <span class="teaser-tower__cap">Hover to line them up →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer class="footer">
   <div class="container">
     <div class="footer__top">
@@ -135,9 +214,18 @@
         <a class="footer__logo-link" href="index.html" aria-label="Monument Property Developments — home"><img class="footer__logo" src="assets/monument-logo-light.png" alt="Monument Property Developments Ltd"></a>
         <p class="footer__brandsub">Building homes, building futures across London for over 18 years.</p>
       </div>
-      <div class="footer__col"><h4>Explore</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="projects.html">Projects</a></li><li><a href="contact.html">Contact</a></li><li><a href="game.html">Play — Build the Monument</a></li></ul></div>
-      <div class="footer__col"><h4>Company</h4><ul><li><span class="soon">Past projects <em>Coming soon</em></span></li><li><span class="soon">Future projects <em>Coming soon</em></span></li><li><a href="privacy.html">Privacy policy</a></li><li><a href="terms.html">Terms &amp; conditions</a></li></ul></div>
-      <div class="footer__col"><h4>Connect</h4><ul><li><a href="contact.html">Get in touch</a></li><li><a href="https://www.linkedin.com/in/hasan-mustafa-3ab600416/" target="_blank" rel="noopener">LinkedIn</a></li></ul></div>
+      <div class="footer__col">
+        <h4>Explore</h4>
+        <ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="projects.html">Projects</a></li><li><a href="contact.html">Contact</a></li><li><a href="game.html">Play — Build the Monument</a></li></ul>
+      </div>
+      <div class="footer__col">
+        <h4>Company</h4>
+        <ul><li><span class="soon">Past projects <em>Coming soon</em></span></li><li><span class="soon">Future projects <em>Coming soon</em></span></li><li><a href="privacy.html">Privacy policy</a></li><li><a href="terms.html">Terms &amp; conditions</a></li></ul>
+      </div>
+      <div class="footer__col">
+        <h4>Connect</h4>
+        <ul><li><a href="contact.html">Get in touch</a></li><li><a href="https://www.linkedin.com/in/hasan-mustafa-3ab600416/" target="_blank" rel="noopener">LinkedIn</a></li></ul>
+      </div>
     </div>
     <div class="footer__bottom">
       <span>© <span data-year>2025</span> Monument Property Developments Ltd · London, UK</span>
@@ -146,7 +234,12 @@
   </div>
 </footer>
 
+<a class="wa-fab" href="https://wa.me/447581194819?text=Hi%20Monument%2C%20I%27d%20like%20to%20get%20in%20touch." target="_blank" rel="noopener" aria-label="Message us on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 1.67c2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.42 5.82c0 4.54-3.7 8.24-8.25 8.24-1.52 0-3.01-.41-4.3-1.19l-.31-.18-3.12.82.83-3.04-.2-.32a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.24-8.23zm4.52 9.95c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.25 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
+  <span class="wa-fab__label">WhatsApp us</span>
+</a>
+
 <script src="assets/site.js"></script>
-<script src="assets/game.js"></script>
+<script src="assets/home.js"></script>
 </body>
 </html>
