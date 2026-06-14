@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terms &amp; Conditions — Monument Property Developments</title>
+<meta name="description" content="The terms governing the use of the Monument Property Developments website.">
+<link rel="icon" type="image/png" href="assets/monument-icon.png">
+<link rel="apple-touch-icon" href="assets/monument-icon.png">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body data-screen-label="Terms & Conditions">
+
+<nav class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="index.html" aria-label="Monument Property Developments — home">
+      <span class="brand__mark"><img class="brand__icon" src="assets/monument-icon.png" alt=""><span class="brand__name">Monument</span></span>
+      <span class="brand__sub">Property Developments</span>
+    </a>
+    <div class="nav__links">
+      <a class="nav__link" href="index.html">Home</a>
+      <a class="nav__link" href="about.html">About</a>
+      <a class="nav__link" href="projects.html">Projects</a>
+      <a class="nav__link" href="contact.html">Contact</a>
+      <a class="nav__link nav__link--play" href="game.html"><span class="pdot"></span>Play</a>
+      <a class="btn btn--primary nav__cta" href="contact.html">Get in touch <span class="arr">→</span></a>
+    </div>
+    <button class="nav__burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="index.html">Home <span class="n">01</span></a>
+  <a href="about.html">About <span class="n">02</span></a>
+  <a href="projects.html">Projects <span class="n">03</span></a>
+  <a href="contact.html">Contact <span class="n">04</span></a>
+  <a href="game.html">Play <span class="n">05</span></a>
+  <a class="btn btn--primary btn--block mm-cta" href="contact.html">Get in touch →</a>
+</div>
+
+<header class="pagehead">
+  <div class="container">
+    <span class="pagehead__index">Legal</span>
+    <p class="kicker">The essentials</p>
+    <h1 class="reveal in">Terms &amp; Conditions</h1>
+    <p class="pagehead__sub reveal in" data-d="1">The terms on which you may use this website. Please read them carefully.</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <div class="legal reveal">
+      <p class="legal__updated">Last updated · 14 June 2026</p>
+
+      <p class="lead">This website is operated by Monument Property Developments Ltd (“Monument”, “we”, “us” or “our”). By accessing or using this website, you agree to these Terms &amp; Conditions. If you do not agree, please do not use the site.</p>
+
+      <h2>1. About us</h2>
+      <p>Monument Property Developments Ltd is a residential property developer based in London, United Kingdom. You can contact us at <a href="mailto:hasan@monumentdevelopments.co.uk">hasan@monumentdevelopments.co.uk</a>.</p>
+
+      <h2>2. Using this website</h2>
+      <p>You may use this website for lawful purposes only. You agree not to:</p>
+      <ul>
+        <li>Use the site in any way that breaches any applicable law or regulation</li>
+        <li>Attempt to gain unauthorised access to the site, its server, or any connected systems</li>
+        <li>Use the site to transmit any harmful, fraudulent or malicious material</li>
+        <li>Misuse our enquiry form, including by submitting spam or false information</li>
+      </ul>
+
+      <h2>3. Information on this website</h2>
+      <p>The content on this website is provided for general information about Monument and our services. While we take care to keep it accurate and up to date, we make no warranties or guarantees that the content is complete, current or error-free. Nothing on this website constitutes professional, legal, financial or investment advice.</p>
+
+      <h2>4. Enquiries and site submissions</h2>
+      <p>Our website allows you to submit enquiries and details of potential sites or land. Submitting an enquiry or a site opportunity:</p>
+      <ul>
+        <li>Does not create any contract, agreement or obligation between you and Monument</li>
+        <li>Does not constitute an offer by us to purchase any site or land</li>
+        <li>Does not guarantee any particular response, outcome, fee or timescale</li>
+      </ul>
+      <p>Any introducer or finder’s fee is offered entirely at our discretion and would be subject to a separate written agreement before any obligation arises.</p>
+
+      <h2>5. Intellectual property</h2>
+      <p>All content on this website — including text, logos, branding, layout, graphics and design — is owned by or licensed to Monument and is protected by copyright and other intellectual property rights. You may not copy, reproduce, republish or distribute any part of this website without our prior written permission.</p>
+
+      <h2>6. Links to other websites</h2>
+      <p>This website may contain links to third-party websites (for example, our LinkedIn page). These links are provided for convenience only. We have no control over the content of those sites and accept no responsibility for them or for any loss arising from your use of them.</p>
+
+      <h2>7. Limitation of liability</h2>
+      <p>To the fullest extent permitted by law, Monument shall not be liable for any loss or damage arising from your use of, or inability to use, this website, or from any reliance placed on its content. Nothing in these terms excludes or limits our liability where it would be unlawful to do so.</p>
+
+      <h2>8. Governing law</h2>
+      <p>These Terms &amp; Conditions are governed by the laws of England and Wales, and any disputes will be subject to the exclusive jurisdiction of the courts of England and Wales.</p>
+
+      <h2>9. Changes to these terms</h2>
+      <p>We may update these Terms &amp; Conditions from time to time. Any changes will be posted on this page with a revised “last updated” date. Your continued use of the website after any change constitutes acceptance of the updated terms.</p>
+
+      <h2>10. Contact us</h2>
+      <p>If you have any questions about these Terms &amp; Conditions, please contact us at <a href="mailto:hasan@monumentdevelopments.co.uk">hasan@monumentdevelopments.co.uk</a>.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__col footer__col--brand">
+        <a class="footer__logo-link" href="index.html" aria-label="Monument Property Developments — home"><img class="footer__logo" src="assets/monument-logo-light.png" alt="Monument Property Developments Ltd"></a>
+        <p class="footer__brandsub">Building homes, building futures across London for over 18 years.</p>
+      </div>
+      <div class="footer__col"><h4>Explore</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="projects.html">Projects</a></li><li><a href="contact.html">Contact</a></li><li><a href="game.html">Play — Build the Monument</a></li></ul></div>
+      <div class="footer__col"><h4>Company</h4><ul><li><span class="soon">Past projects <em>Coming soon</em></span></li><li><span class="soon">Future projects <em>Coming soon</em></span></li><li><a href="privacy.html">Privacy policy</a></li><li><a href="terms.html">Terms &amp; conditions</a></li></ul></div>
+      <div class="footer__col"><h4>Connect</h4><ul><li><a href="contact.html">Get in touch</a></li><li><a href="https://www.linkedin.com/in/hasan-mustafa-3ab600416/" target="_blank" rel="noopener">LinkedIn</a></li></ul></div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span data-year>2025</span> Monument Property Developments Ltd · London, UK</span>
+      <span>Building Homes, Building Futures</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-fab" href="https://wa.me/447581194819?text=Hi%20Monument%2C%20I%27d%20like%20to%20get%20in%20touch." target="_blank" rel="noopener" aria-label="Message us on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 1.67c2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.42 5.82c0 4.54-3.7 8.24-8.25 8.24-1.52 0-3.01-.41-4.3-1.19l-.31-.18-3.12.82.83-3.04-.2-.32a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.24-8.23zm4.52 9.95c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.25 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
+  <span class="wa-fab__label">WhatsApp us</span>
+</a>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

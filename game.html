@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — Monument Property Developments</title>
+<meta name="description" content="Get in touch with Monument Property Developments — whether you have a site or land, spotted one of our boards, or have a general enquiry. We read every message personally.">
+<link rel="icon" type="image/png" href="assets/monument-icon.png">
+<link rel="apple-touch-icon" href="assets/monument-icon.png">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body data-screen-label="Contact">
+
+<nav class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="index.html" aria-label="Monument Property Developments — home">
+      <span class="brand__mark"><img class="brand__icon" src="assets/monument-icon.png" alt=""><span class="brand__name">Monument</span></span>
+      <span class="brand__sub">Property Developments</span>
+    </a>
+    <div class="nav__links">
+      <a class="nav__link" href="index.html">Home</a>
+      <a class="nav__link" href="about.html">About</a>
+      <a class="nav__link" href="projects.html">Projects</a>
+      <a class="nav__link active" href="contact.html">Contact</a>
+      <a class="nav__link nav__link--play" href="game.html"><span class="pdot"></span>Play</a>
+      <a class="btn btn--primary nav__cta" href="contact.html">Get in touch <span class="arr">→</span></a>
+    </div>
+    <button class="nav__burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="index.html">Home <span class="n">01</span></a>
+  <a href="about.html">About <span class="n">02</span></a>
+  <a href="projects.html">Projects <span class="n">03</span></a>
+  <a href="contact.html">Contact <span class="n">04</span></a>
+  <a href="game.html">Play <span class="n">05</span></a>
+  <a class="btn btn--primary btn--block mm-cta" href="contact.html">Get in touch →</a>
+</div>
+
+<header class="pagehead">
+  <div class="container">
+    <span class="pagehead__index">04 / Contact</span>
+    <p class="kicker">Talk to us</p>
+    <h1 class="reveal in">Get in touch.</h1>
+    <p class="pagehead__sub reveal in" data-d="1">Got a site or some land? Spotted one of our boards? Or just have a question? However you've found us, we'd love to hear from you — and we read every message ourselves.</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container split" style="align-items:start;gap:clamp(40px,7vw,110px)">
+
+    <!-- LEFT: details -->
+    <div class="reveal">
+      <p class="kicker">No call centres</p>
+      <h2 style="margin-bottom:.6em">However you reach us, you'll reach a person.</h2>
+      <p class="muted maxw-prose">Whether you're a landowner, you've seen one of our development boards out and about, or you simply have a question — your message comes straight to our team. No chatbots, no runaround.</p>
+
+      <dl style="margin-top:2.4em">
+        <div class="inforow"><dt>Email</dt><dd><a href="mailto:hasan@monumentdevelopments.co.uk" class="textlink" style="border:0;padding:0">hasan@monumentdevelopments.co.uk</a></dd></div>
+        <div class="inforow"><dt>Hours</dt><dd>Mon–Fri · 9:00–18:00</dd></div>
+      </dl>
+    </div>
+
+    <!-- RIGHT: form -->
+    <div class="reveal" data-d="1">
+      <form class="form" id="contactForm" name="enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="enquiry">
+        <p hidden aria-hidden="true" style="display:none"><label>Don’t fill this in if you’re human: <input name="bot-field"></label></p>
+
+        <div class="field">
+          <label>What's this about? <span class="req">*</span></label>
+          <div class="chips" id="reasonChips" role="group">
+            <span class="chip" data-reason="site">I have a site / land</span>
+            <span class="chip" data-reason="referral">Introducing a site</span>
+            <span class="chip" data-reason="board">Saw one of your boards</span>
+            <span class="chip" data-reason="general">General enquiry</span>
+            <span class="chip" data-reason="invest">Invest / partner</span>
+          </div>
+          <input type="hidden" id="reason" name="reason">
+          <span class="err">Please choose what your enquiry is about.</span>
+        </div>
+
+        <div class="grid g-2" style="gap:22px">
+          <div class="field">
+            <label for="name">Name <span class="req">*</span></label>
+            <input class="input" id="name" name="name" type="text" placeholder="Your full name" required>
+            <span class="err">Please enter your name.</span>
+          </div>
+          <div class="field">
+            <label for="email">Email <span class="req">*</span></label>
+            <input class="input" id="email" name="email" type="email" placeholder="you@email.com" required>
+            <span class="err">Please enter a valid email.</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input class="input" id="phone" name="phone" type="tel" placeholder="Optional — useful if you'd prefer a call back">
+          <span class="err"></span>
+        </div>
+
+        <!-- conditional: site -->
+        <div class="field cond" data-show="site referral" hidden>
+          <label for="location">Site location / postcode</label>
+          <input class="input" id="location" name="location" type="text" placeholder="e.g. London E8, or nearest postcode">
+          <span class="err"></span>
+        </div>
+        <div class="field cond" data-show="site" hidden>
+          <label>Type of opportunity</label>
+          <div class="chips" id="typeChips" role="group">
+            <span class="chip" data-val="Residential">Residential</span>
+            <span class="chip" data-val="Commercial">Commercial</span>
+            <span class="chip" data-val="Mixed-use">Mixed-use</span>
+            <span class="chip" data-val="Land only">Land only</span>
+            <span class="chip" data-val="Not sure">Not sure</span>
+          </div>
+          <input type="hidden" id="siteType" name="siteType">
+        </div>
+
+        <!-- conditional: board -->
+        <div class="field cond" data-show="board" hidden>
+          <label for="board">Which development / board location</label>
+          <input class="input" id="board" name="board" type="text" placeholder="e.g. the board on Mare Street, E8">
+          <span class="err"></span>
+        </div>
+
+        <div class="field">
+          <label for="message" id="msgLabel">Your message <span class="req">*</span></label>
+          <textarea class="textarea" id="message" name="message" placeholder="Choose an option above, then tell us a little more…" required></textarea>
+          <span class="err">Please add a few details so we can help.</span>
+        </div>
+
+        <button class="btn btn--primary btn--block" type="submit" id="submitBtn">Send enquiry <span class="arr">→</span></button>
+        <p class="muted" style="font-size:.78rem;text-align:center;margin:0">By sending, you agree to be contacted about your enquiry. We never share your details.</p>
+      </form>
+
+      <div class="form__success reveal" id="success" style="display:none">
+        <div class="tick">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <h3 style="margin-bottom:.4em">Thank you — message received.</h3>
+        <p class="muted" style="margin:0">Your enquiry is with our team. We read every message personally and will reply, usually within two working days.</p>
+        <button class="btn btn--ghost" id="resetBtn" style="margin-top:1.6em">Send another <span class="arr">→</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__col footer__col--brand">
+        <a class="footer__logo-link" href="index.html" aria-label="Monument Property Developments — home"><img class="footer__logo" src="assets/monument-logo-light.png" alt="Monument Property Developments Ltd"></a>
+        <p class="footer__brandsub">Building homes, building futures across London for over 18 years.</p>
+      </div>
+      <div class="footer__col"><h4>Explore</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="projects.html">Projects</a></li><li><a href="contact.html">Contact</a></li><li><a href="game.html">Play — Build the Monument</a></li></ul></div>
+      <div class="footer__col"><h4>Company</h4><ul><li><span class="soon">Past projects <em>Coming soon</em></span></li><li><span class="soon">Future projects <em>Coming soon</em></span></li><li><a href="privacy.html">Privacy policy</a></li><li><a href="terms.html">Terms &amp; conditions</a></li></ul></div>
+      <div class="footer__col"><h4>Connect</h4><ul><li><a href="contact.html">Get in touch</a></li><li><a href="https://www.linkedin.com/in/hasan-mustafa-3ab600416/" target="_blank" rel="noopener">LinkedIn</a></li></ul></div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span data-year>2025</span> Monument Property Developments Ltd · London, UK</span>
+      <span>Building Homes, Building Futures</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-fab" href="https://wa.me/447581194819?text=Hi%20Monument%2C%20I%27d%20like%20to%20get%20in%20touch." target="_blank" rel="noopener" aria-label="Message us on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 1.67c2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.42 5.82c0 4.54-3.7 8.24-8.25 8.24-1.52 0-3.01-.41-4.3-1.19l-.31-.18-3.12.82.83-3.04-.2-.32a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.24-8.23zm4.52 9.95c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.25 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
+  <span class="wa-fab__label">WhatsApp us</span>
+</a>
+
+<script src="assets/site.js"></script>
+<script>
+(function(){
+  var form=document.getElementById('contactForm');
+  var success=document.getElementById('success');
+  var resetBtn=document.getElementById('resetBtn');
+  var reasonChips=[].slice.call(document.querySelectorAll('#reasonChips .chip'));
+  var reasonInput=document.getElementById('reason');
+  var typeChips=[].slice.call(document.querySelectorAll('#typeChips .chip'));
+  var typeInput=document.getElementById('siteType');
+  var conds=[].slice.call(document.querySelectorAll('.cond'));
+  var msg=document.getElementById('message');
+  var msgLabel=document.getElementById('msgLabel');
+
+  var copy={
+    site:{label:'Tell us about the site', ph:'Approximate size, planning status, your role, and anything that would help us understand the opportunity.'},
+    board:{label:'Your message', ph:'Which board did you see, and what would you like to know? Quote any reference on the board if you can.'},
+    general:{label:'Your message', ph:'How can we help?'},
+    invest:{label:'Your message', ph:'Tell us a little about your interest in working with us.'},
+    referral:{label:'About the site you\'re introducing', ph:'Where is the site, and who owns it if you know? Add your details so we can arrange your finder\'s fee if we complete.'}
+  };
+
+  function applyReason(reason){
+    reasonInput.value=reason;
+    reasonChips.forEach(function(c){ c.classList.toggle('sel', c.getAttribute('data-reason')===reason); });
+    conds.forEach(function(el){
+      var show=el.getAttribute('data-show').split(' ').indexOf(reason)>-1;
+      el.hidden=!show;
+    });
+    if(copy[reason]){
+      msgLabel.innerHTML=copy[reason].label+' <span class="req">*</span>';
+      msg.setAttribute('placeholder', copy[reason].ph);
+    }
+    form.querySelector('.field').classList.remove('invalid');
+  }
+
+  reasonChips.forEach(function(chip){
+    chip.addEventListener('click',function(){ applyReason(chip.getAttribute('data-reason')); });
+  });
+  typeChips.forEach(function(chip){
+    chip.addEventListener('click',function(){
+      typeChips.forEach(function(c){c.classList.remove('sel');});
+      chip.classList.add('sel'); typeInput.value=chip.getAttribute('data-val');
+    });
+  });
+
+  function validEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var ok=true;
+    var name=document.getElementById('name'), email=document.getElementById('email');
+    var checks=[
+      [reasonChips[0].closest('.field'), reasonInput.value.length>0],
+      [name.closest('.field'), name.value.trim().length>0],
+      [email.closest('.field'), validEmail(email.value.trim())],
+      [msg.closest('.field'), msg.value.trim().length>0]
+    ];
+    checks.forEach(function(p){ var bad=!p[1]; p[0].classList.toggle('invalid',bad); if(bad) ok=false; });
+    if(!ok){ var first=form.querySelector('.field.invalid .input,.field.invalid .textarea,.field.invalid .chips'); if(first&&first.focus) first.focus(); return; }
+    var btn=document.getElementById('submitBtn');
+    btn.textContent='Sending…'; btn.disabled=true;
+    function showSuccess(){ form.style.display='none'; success.style.display='block'; success.classList.add('in'); }
+    var body=new URLSearchParams(new FormData(form)).toString();
+    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body})
+      .then(showSuccess).catch(showSuccess);
+  });
+
+  ['name','email','message'].forEach(function(id){
+    var el=document.getElementById(id);
+    el.addEventListener('input',function(){ el.closest('.field').classList.remove('invalid'); });
+  });
+
+  if(resetBtn){
+    resetBtn.addEventListener('click',function(){
+      form.reset();
+      reasonChips.forEach(function(c){c.classList.remove('sel');});
+      typeChips.forEach(function(c){c.classList.remove('sel');});
+      reasonInput.value=''; typeInput.value='';
+      conds.forEach(function(el){ el.hidden=true; });
+      msgLabel.innerHTML='Your message <span class="req">*</span>';
+      msg.setAttribute('placeholder','Choose an option above, then tell us a little more…');
+      var btn=document.getElementById('submitBtn');
+      btn.innerHTML='Send enquiry <span class="arr">→</span>'; btn.disabled=false;
+      success.style.display='none'; form.style.display='grid';
+    });
+  }
+  // pre-fill from URL params (e.g. arriving from the site qualifier or a referral CTA)
+  (function(){
+    var p=new URLSearchParams(location.search);
+    var r=p.get('reason'); if(r) applyReason(r);
+    var loc=p.get('location'); if(loc){ var l=document.getElementById('location'); if(l) l.value=loc; }
+    var ty=p.get('type'); if(ty){ typeChips.forEach(function(c){ if(c.getAttribute('data-val').toLowerCase()===ty.toLowerCase()){ c.classList.add('sel'); typeInput.value=c.getAttribute('data-val'); } }); }
+    var m=p.get('msg'); if(m){ msg.value=m; }
+  })();
+})();
+</script>
+</body>
+</html>
