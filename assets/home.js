@@ -1,0 +1,173 @@
+/* MONUMENT — home page interactions: site qualifier + map */
+(function(){
+  function ready(fn){ if(document.readyState!=='loading') fn(); else document.addEventListener('DOMContentLoaded',fn); }
+
+  ready(function(){
+    /* ============ SITE QUALIFIER ============ */
+    var qual=document.getElementById('qualifier');
+    if(qual){
+      var steps=[
+        {key:'location', q:'Where is the site?', help:'A borough or postcode area is plenty — even roughly.', type:'text', placeholder:'e.g. Hackney, or E8'},
+        {key:'size', q:'Roughly how big is it?', type:'choice', options:['Under 0.25 acre','0.25 – 1 acre','Over 1 acre','Not sure yet']},
+        {key:'type', q:'What kind of opportunity?', type:'choice', options:['Residential','Commercial','Mixed-use','Just the land','Not sure']},
+        {key:'planning', q:'Any planning permission?', type:'choice', options:['No planning yet','Outline / pre-app','Full permission','Not sure']},
+        {key:'role', q:'And you are…', type:'choice', options:['The owner','Acting for the owner','An introducer','Just enquiring']}
+      ];
+      var answers={}, idx=0;
+      var stage=qual.querySelector('.qual__stage');
+      var bar=qual.querySelector('.qual__bar span');
+      var stepNum=qual.querySelector('#qStepNum');
+      var head=qual.querySelector('.qual__head');
+
+      function esc(s){ return (s||'').replace(/[<>&"]/g,function(c){return{'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c];}); }
+
+      function render(){
+        var s=steps[idx];
+        bar.style.width=((idx)/steps.length*100+ (100/steps.length))+'%';
+        stepNum.textContent=(idx+1);
+        var html='<div class="qual__q">'+s.q+'</div>';
+        if(s.help) html+='<div class="qual__help">'+s.help+'</div>';
+        if(s.type==='choice'){
+          html+='<div class="qual__opts">';
+          s.options.forEach(function(o){
+            var sel=answers[s.key]===o?' sel':'';
+            html+='<button type="button" class="qopt'+sel+'" data-val="'+esc(o)+'">'+o+'<span class="qarr">→</span></button>';
+          });
+          html+='</div>';
+        } else {
+          html+='<div class="qual__textrow"><input class="input" id="qText" type="text" placeholder="'+esc(s.placeholder)+'" value="'+esc(answers[s.key]||'')+'"><button type="button" class="btn btn--primary" id="qNext">Continue <span class="arr">→</span></button></div>';
+        }
+        html+='<div class="qual__nav"><button type="button" class="qual__back"'+(idx===0?' disabled':'')+'>← Back</button><span class="qual__step" style="margin:0">Takes 30 seconds</span></div>';
+        stage.innerHTML=html;
+        head.style.display='flex';
+
+        stage.querySelectorAll('.qopt').forEach(function(b){
+          b.addEventListener('click',function(){ answers[s.key]=b.getAttribute('data-val'); advance(); });
+        });
+        var nextBtn=stage.querySelector('#qNext'), txt=stage.querySelector('#qText');
+        if(nextBtn){
+          var go=function(){ answers[s.key]=(txt.value.trim()||'Not specified'); advance(); };
+          nextBtn.addEventListener('click',go);
+          txt.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); go(); }});
+          setTimeout(function(){ txt.focus({preventScroll:true}); },60);
+        }
+        var back=stage.querySelector('.qual__back');
+        if(back) back.addEventListener('click',function(){ if(idx>0){ idx--; render(); }});
+      }
+
+      function advance(){ if(idx<steps.length-1){ idx++; render(); } else { result(); } }
+
+      function result(){
+        bar.style.width='100%';
+        head.style.display='none';
+        var loc=answers.location||'your site';
+        var plan=answers.planning||'';
+        var type=answers.type||'';
+        var inLondon=/lond|^[ensw]{1,2}\d|^[ensw]{1,2}$|hackney|walthamstow|leyton|tottenham|chingford|stratford|essex|kent|surrey|^e\d|^n\d|^se\d|^sw\d|^w\d|^ec\d|^wc\d/i.test(loc);
+        var lines=[];
+        lines.push(inLondon ? 'It\u2019s in our patch \u2014 London and the surrounding boroughs are exactly where we build.' : 'We\u2019ll take a close look \u2014 we consider sites across London and the surrounding areas.');
+        if(plan==='Full permission') lines.push('With full permission it\u2019s effectively shovel-ready, which is exactly the kind of site we move quickly on.');
+        else if(plan==='No planning yet'||plan==='Not sure') lines.push('No planning yet is no problem \u2014 we\u2019re comfortable taking sites through the planning process ourselves.');
+        else if(plan==='Outline / pre-app') lines.push('A site with outline or pre-app progress gives us a great head start.');
+        if(answers.role==='An introducer') lines.push('And as an introducer, there\u2019s a finder\u2019s fee in it for you if we complete.');
+
+        var sum=[];
+        if(answers.location) sum.push(answers.location);
+        if(answers.size) sum.push(answers.size);
+        if(answers.type) sum.push(answers.type);
+        if(answers.planning) sum.push(answers.planning);
+
+        var msg='Site enquiry from the qualifier:\n'
+          +'\u2022 Location: '+(answers.location||'\u2014')+'\n'
+          +'\u2022 Size: '+(answers.size||'\u2014')+'\n'
+          +'\u2022 Type: '+(answers.type||'\u2014')+'\n'
+          +'\u2022 Planning: '+(answers.planning||'\u2014')+'\n'
+          +'\u2022 I am: '+(answers.role||'\u2014');
+        var params='?reason=site'
+          +'&location='+encodeURIComponent(answers.location||'')
+          +'&type='+encodeURIComponent(answers.type||'')
+          +'&msg='+encodeURIComponent(msg);
+        var wa='https://wa.me/447581194819?text='+encodeURIComponent(msg);
+
+        function showResult(){
+          stage.innerHTML=''
+            +'<div class="qual__result">'
+            +'<span class="qual__badge"><span class="dot"></span>Looks like a fit</span>'
+            +'<h3>Yes \u2014 this is the kind of site we want.</h3>'
+            +'<p>'+lines.join(' ')+'</p>'
+            +'<div class="qual__sum">'+sum.map(function(x){return '<span class="qsum">'+x+'</span>';}).join('')+'</div>'
+            +'<div class="qual__send">'
+            +'<p class="qual__sendlabel">Where shall we send our reply?</p>'
+            +'<div class="qual__fields">'
+            +'<input class="input" id="qName" type="text" placeholder="Your name" autocomplete="name">'
+            +'<input class="input" id="qEmail" type="email" placeholder="Your email" autocomplete="email">'
+            +'</div>'
+            +'<input class="input" id="qPhone" type="tel" placeholder="Phone (optional)" autocomplete="tel" style="margin-bottom:10px">'
+            +'<div class="qerr" id="qErr"></div>'
+            +'<div class="qual__rcta">'
+            +'<button type="button" class="btn btn--primary" id="qSend">Send these details <span class="arr">\u2192</span></button>'
+            +'<a class="btn btn--ghost" href="'+wa+'" target="_blank" rel="noopener">WhatsApp it instead</a>'
+            +'</div>'
+            +'</div>'
+            +'<div class="qual__nav" style="justify-content:center;margin-top:1.4em"><button type="button" class="qual__back" id="qRestart">\u21ba Start again</button></div>'
+            +'</div>';
+          stage.querySelector('#qRestart').addEventListener('click',function(){ answers={}; idx=0; render(); });
+          stage.querySelector('#qSend').addEventListener('click',send);
+          stage.querySelector('#qEmail').addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); send(); }});
+        }
+
+        function send(){
+          var nameEl=stage.querySelector('#qName'), emailEl=stage.querySelector('#qEmail'), phoneEl=stage.querySelector('#qPhone'), err=stage.querySelector('#qErr');
+          var nm=(nameEl.value||'').trim(), em=(emailEl.value||'').trim();
+          if(!nm){ err.textContent='Please add your name.'; nameEl.focus(); return; }
+          if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){ err.textContent='Please enter a valid email.'; emailEl.focus(); return; }
+          err.textContent='';
+          var btn=stage.querySelector('#qSend'); btn.innerHTML='Sending\u2026'; btn.disabled=true;
+          var data={
+            'form-name':'enquiry', reason:'site', name:nm, email:em,
+            phone:(phoneEl.value||'').trim(), location:answers.location||'',
+            siteType:answers.type||'', message:msg
+          };
+          var body=Object.keys(data).map(function(k){return encodeURIComponent(k)+'='+encodeURIComponent(data[k]);}).join('&');
+          function done(){ sent(em); }
+          fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body}).then(done).catch(done);
+        }
+
+        function sent(email){
+          stage.innerHTML=''
+            +'<div class="qual__result">'
+            +'<span class="qual__badge"><span class="dot"></span>Message sent</span>'
+            +'<h3>Thank you \u2014 it\u2019s with us.</h3>'
+            +'<p>We\u2019ve got your site details and will reply to <strong style="color:var(--text)">'+esc(email)+'</strong> shortly, usually within two working days.</p>'
+            +'<div class="qual__rcta"><a class="btn btn--ghost" href="'+wa+'" target="_blank" rel="noopener">Message us on WhatsApp too</a></div>'
+            +'<div class="qual__nav" style="justify-content:center;margin-top:1.6em"><button type="button" class="qual__back" id="qRestart2">\u21ba Submit another site</button></div>'
+            +'</div>';
+          stage.querySelector('#qRestart2').addEventListener('click',function(){ answers={}; idx=0; render(); });
+        }
+
+        showResult();
+      }
+
+      render();
+    }
+
+    /* ============ WHERE WE BUILD — MAP ============ */
+    var map=document.getElementById('buildMap');
+    if(map){
+      var detail=document.getElementById('mapDetail');
+      var pins=[].slice.call(map.querySelectorAll('.pin'));
+      function show(pin){
+        pins.forEach(function(p){ p.classList.remove('active'); });
+        pin.classList.add('active');
+        detail.innerHTML=''
+          +'<div class="map-detail__tag">'+pin.getAttribute('data-tag')+'</div>'
+          +'<h3>'+pin.getAttribute('data-name')+'</h3>'
+          +'<div class="map-detail__meta"><span>'+pin.getAttribute('data-area')+'</span><span>'+pin.getAttribute('data-units')+'</span><span>'+pin.getAttribute('data-when')+'</span></div>';
+      }
+      pins.forEach(function(p){
+        p.addEventListener('click',function(){ show(p); });
+        p.addEventListener('mouseenter',function(){ show(p); });
+      });
+    }
+  });
+})();
